@@ -1,0 +1,7 @@
+*
+!*.c
+!*.xlsx
+!README.md
+!.gitignore
+!README.assets/
+!README.assets/*
