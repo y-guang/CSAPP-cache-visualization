@@ -73,13 +73,13 @@ void output_mem_ref(int phy_addr, int CT_len, int CI_len, int CO_len) {
 int main(int argc, char const *argv[]) {
   int max_index, max_byte, addr_wide, CO_len, CI_len, CT_len, phy_addr;
 
-  printf("Physical addresses wide:\n");
+  printf("Physical addresses wide, decimal:\n");
   scanf("%d", &addr_wide);
   if (addr_wide < 0 || addr_wide > 64) {
     printf("invalid\n");
   }
 
-  printf("enter the max index, dec:\n");
+  printf("enter the max index, decimal:\n");
   scanf("%d", &max_index);
   CI_len = log_2(max_index + 1);
   if (CI_len < 0) {
@@ -87,7 +87,7 @@ int main(int argc, char const *argv[]) {
     return -1;
   }
 
-  printf("enter the max byte_i, dec:\n");
+  printf("enter the max byte_i, decimal:\n");
   scanf("%d", &max_byte);
   CO_len = log_2(max_byte + 1);
   if (CO_len < 0) {
@@ -99,7 +99,7 @@ int main(int argc, char const *argv[]) {
 
   output_addr_format(CT_len, CI_len, CO_len);
 
-  printf("enter the Physical address without 0x\n");
+  printf("enter the Physical address (hex) without 0x\n");
   scanf("%x", &phy_addr);
   output_addr_bits(phy_addr, addr_wide);
 
