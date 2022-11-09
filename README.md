@@ -16,8 +16,6 @@ During the final review period, I built these tools to help me understand the co
 
 ### Cache lookups
 
-Answer the typical question about Cache lookups.
-
 The question might give an table of cache,
 
 | Set index | Tag  | Valid | Byte 0 | Byte 1 | Byte 2 | Byte 3 |
@@ -27,16 +25,14 @@ The question might give an table of cache,
 | 1         | 0    | 1     | 12     | 32     | 31     | 27     |
 |           | 83   | 0     | —      | —      | —      | —      |
 
-and corresponding physical address wide, For the above table it's 11.
+and corresponding physical address wide. Suppose the address wide is 11 in our question.
 
-The complied `cache lookups.c` can illustrate information of such cache:
+The complied `cache lookups.c` can illustrate format of such cache:
 
 ![image-20221109151752828](./README.assets/image-20221109151752828.png)
 
-Also, given an physical address, it can figure out the corresponding information:
-
-for given address `0x419`, we get following information.
+Also, given an physical address like `0x419`, it can figure out the corresponding information:
 
 ![image-20221109152129094](./README.assets/image-20221109152129094.png)
 
-Then, we can find it is value `89` in the table.
+According to these information, we can find the value `89` in the cache table.
