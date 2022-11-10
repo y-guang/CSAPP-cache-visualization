@@ -14,7 +14,7 @@ In my understanding, it is an ANU implementation of CSAPP (*Computer Systems: A 
 
 During the final review period, I built these tools to help me understand the concepts in the course. If it is of any use to you, feel free to modify and use it.
 
-### Cache lookups
+### Cache lookups.c
 
 The question might give an table of cache,
 
