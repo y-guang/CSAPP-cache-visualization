@@ -5,3 +5,5 @@
 !.gitignore
 !README.assets/
 !README.assets/*
+!CacheSimulator/
+!CacheSimulator/*
