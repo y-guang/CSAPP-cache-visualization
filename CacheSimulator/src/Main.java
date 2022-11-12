@@ -1,16 +1,32 @@
 public class Main {
-    // Practice Problem 6.18
     public static void main(String[] args) {
-        DirectMappedCache cache = new DirectMappedCache(2048, 32);
-        int i, j;
-        for (i = 31; i >= 0; i--) {
-            for (j = 31; j >= 0; j--) {
-                cache.read(i * 32 * 8 + j * 8);
-                cache.read(i * 32 * 8 + j * 8 + 4);
+        DirectMappedCache cache = new DirectMappedCache(16, 8);
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                if (cache.read(i * 2 * 4 + j * 4)) {
+                    System.out.println("r hit, " + i + j);
+                }
+                if(cache.write(j * 2 * 4 + i * 4 + 16)) {
+                    System.out.println("w hit " + i + j);
+                }
+
             }
         }
         cache.outputSummary();
     }
+
+    // Practice Problem 6.18
+//    public static void main(String[] args) {
+//        DirectMappedCache cache = new DirectMappedCache(2048, 32);
+//        int i, j;
+//        for (i = 31; i >= 0; i--) {
+//            for (j = 31; j >= 0; j--) {
+//                cache.read(i * 32 * 8 + j * 8);
+//                cache.read(i * 32 * 8 + j * 8 + 4);
+//            }
+//        }
+//        cache.outputSummary();
+//    }
 
     // exam3 Q3
 //    public static void main(String[] args) {

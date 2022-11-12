@@ -28,26 +28,30 @@ public class DirectMappedCache {
         }
     }
 
-    public void write(long addr) {
+    public boolean write(long addr) {
         int index = addr_to_index(addr);
         CacheLine line = cacheLines.get(index);
-        if (line.isHit(addr)) {
+        boolean isHit = line.isHit(addr);
+        if (isHit) {
             writeHit++;
         } else {
             writeMiss++;
             line.load(addr_to_start(addr));
         }
+        return isHit;
     }
 
-    public void read(long addr) {
+    public boolean read(long addr) {
         int index = addr_to_index(addr);
         CacheLine line = cacheLines.get(index);
-        if (line.isHit(addr)) {
+        boolean isHit = line.isHit(addr);
+        if (isHit) {
             readHit++;
         } else {
             readMiss++;
             line.load(addr_to_start(addr));
         }
+        return isHit;
     }
 
     /**
