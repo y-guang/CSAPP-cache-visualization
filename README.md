@@ -4,9 +4,68 @@ Several tools to help understanding and visualizing the cache concepts covered i
 
 ## Tools
 
-### CacheSimulator
+### DirectMappedCacheSimulator
 
-A java program. 
+A java program to illustrate the read and write on direct mapped cache. With java debugger, it is easy to discover what is happening in the cache.
+
+#### Example
+
+Question from ANU-COMP2310:
+
+> Given direct mapped cache of size 64K with block size of 16 bytes, and the code
+
+```c
+void copy_matrix(int dest[ROWS][COLS], int src[ROWS][COLS]) {
+  int i, j;
+  for (i = 0; i < ROWS; i++) {
+    for (j = 0; j < COLS; j++) {
+      dest[i][j] = src[i][j];
+    }
+  }
+}
+```
+
+> What is the cache miss rate if ROWS = 128 and COLS = 192?  
+
+Following code in `Main.java` can illustrate the access pattern and 
+
+```java
+    public static void main(String[] args) {
+        int ROWS = 192;
+        int COLS = 128;
+        long src = 0L; // start addr of src
+        long dest = src + ROWS * COLS * 4; // start addr of dest
+        DirectMappedCache cache = new DirectMappedCache(64 * 1024, 16); // initialize the cache
+        // rewrite the routine in term of read and write
+        for (int j = 0; j < COLS; j++) {
+            for (int i = 0; i < ROWS; i++) {
+                cache.read(src + i * COLS * 4 + j * 4);
+                cache.write(dest + i * COLS * 4 + (COLS - 1 - j) * 4);
+            }
+        }
+        // printout the finial hit / miss
+        cache.outputSummary();
+    }
+```
+
+When we step over in debugger, we can see how cache line's content change 
+
+![image-20221114135132337](./README.assets/image-20221114135132337.png)
+
+Each cache line in the form`cache cache index, valid, start addr, end addr`.
+
+After all, `cache.outputSummary();` will give the summary
+
+```
+Hit ratio: 	0.25
+Miss ratio:	0.75
+Hit: 	12288
+  Read Hit: 	6144
+  Write Hit: 	6144
+Miss: 	36864
+  Read Miss: 	18432
+  Write Miss: 	18432
+```
 
 ### Cache lookups.c
 
