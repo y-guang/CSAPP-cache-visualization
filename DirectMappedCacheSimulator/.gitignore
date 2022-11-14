@@ -2,3 +2,5 @@
 !src/*
 !test/
 !test/*
+!.idea/
+!.idea/*
