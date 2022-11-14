@@ -67,6 +67,14 @@ Miss: 	36864
   Write Miss: 	18432
 ```
 
+### virtual addresses translator.xlsx
+
+Just fill in the data in the green cells. 
+
+Try changing the data and see how this affects the virtual address. This table gives me an intuition for virtual memory.
+
+![image-20221114140010710](./README.assets/image-20221114140010710.png)
+
 ### Cache lookups.c
 
 The question might give an table of cache,
@@ -89,3 +97,4 @@ Also, given an physical address like `0x419`, it can figure out the correspondin
 ![image-20221109152129094](./README.assets/image-20221109152129094.png)
 
 According to these information, we can find the value `89` in the cache table.
+
